@@ -1,1 +1,1 @@
-# vuejs-typescript-intro
+# Learning Vue.js and TypeScript
