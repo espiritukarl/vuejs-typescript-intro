@@ -1,20 +1,24 @@
 <template>
-  <h1>Vue 3 Todo App</h1>
-  <section class="searchBar">
-    <form @submit.prevent="addNewTodo">
-      <label>New Todo: </label>
-      <input v-model="newTodo" name="newTodo" placeholder="Enter new task...">
-      <button>Add New Todo</button>
-    </form>
-    <button @click="markAllDone">Mark All Done</button>
-  </section>
+  <main>
+    <h1 class="mb-5 mt-5">Vue 3 Todo App</h1>
+    <section class="searchBar">
+      <form @submit.prevent="addNewTodo" class="form-floating">
+        <input v-model="newTodo" id="newTodo" placeholder="" class="form-control form-control-sm border border-primary">
+        <label for="newTodo">Enter new task</label>
 
-  <ul>
-    <li class="todoTasks" v-for="(todo,index) in todos" :key="todo.id" @click="toggleDone(todo)">
-      <TodoList @test-click="removeTodo(index)" :title="todo.content" :done="todo.done" />
-    </li>
-  </ul>
+        <div class="submit-buttons mt-2">
+          <button class="btn btn-outline-primary btn-sm">Add New Todo</button>
+          <button class="btn btn-outline-primary btn-sm" @click="markAllDone">Mark All Done</button>
+        </div>
+      </form>
+    </section>
 
+    <ul class="mb-5">
+      <li class="todoTasks" v-for="(todo,index) in todos" :key="todo.id" @click="toggleDone(todo)">
+        <TodoList @test-click="removeTodo(index)" :index=index :title="todo.content" :done="todo.done" />
+      </li>
+    </ul>
+  </main>
 </template>
 
 <script>
@@ -66,11 +70,38 @@ export default {
 </script>
 
 <style>
+h1 {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  text-shadow: 1px 1px gray;
+}
+
 .searchBar {
   display: flex;
+  justify-content: center;
+}
+
+.submit-buttons {
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+}
+
+input {
+  min-width: 900px;
 }
 
 .todoTasks {
   cursor: pointer;
+}
+
+li {
+  margin: 0 auto;
+  list-style: none;
+  max-width: 800px;
+}
+
+input {
+  background-color: transparent !important;
 }
 </style>
