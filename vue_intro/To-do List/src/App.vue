@@ -9,6 +9,7 @@
         <div class="submit-buttons mt-2">
           <button class="btn btn-outline-primary btn-sm">Add New Todo</button>
           <button class="btn btn-outline-primary btn-sm" @click="markAllDone">Mark All Done</button>
+          <button class="btn btn-outline-danger btn-sm" @click="deleteAll">Delete All</button>
         </div>
       </form>
     </section>
@@ -55,11 +56,15 @@ export default {
         todos.value.forEach((todo) => todo.done = true);
       }
     }
+    function deleteAll() {
+      todos.value.splice(0, todos.value.length)
+    }
     return {
       addNewTodo,
       toggleDone,
       removeTodo,
       markAllDone,
+      deleteAll,
       newTodo,
       todos,
       tempID,
