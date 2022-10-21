@@ -2,7 +2,7 @@
   <main>
     <h1 class="mb-5 mt-5">Vue 3 To-do App</h1>
     <section class="searchBar">
-      <form @submit.prevent="addNewTodo" class="form-floating">
+      <form @submit.prevent="addNewTodo" class="form-floating" autocomplete="off">
         <input v-model="newTodo" id="newTodo" placeholder="" class="form-control form-control-sm border border-primary">
         <label for="newTodo">Enter new task</label>
 
