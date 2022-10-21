@@ -10,7 +10,7 @@ Learning Vue.JS, I created a To-do app with the following functionalities:
 - Delete a To-do
 - Remove all To-do's
 - Styled the page with Bootstrap  
-![To-do App screenshot](./To-do List/src/assets/Screenshot_TodoApp.png)
+![To-do App screenshot](vue_intro/To-do List/src/assets/Screenshot_TodoApp.png)
   
 ## To-do:
 - Learning TypeScript
