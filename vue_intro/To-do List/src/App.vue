@@ -1,13 +1,13 @@
 <template>
   <main>
-    <h1 class="mb-5 mt-5">Vue 3 Todo App</h1>
+    <h1 class="mb-5 mt-5">Vue 3 To-do App</h1>
     <section class="searchBar">
       <form @submit.prevent="addNewTodo" class="form-floating">
         <input v-model="newTodo" id="newTodo" placeholder="" class="form-control form-control-sm border border-primary">
         <label for="newTodo">Enter new task</label>
 
         <div class="submit-buttons mt-2">
-          <button class="btn btn-outline-primary btn-sm">Add New Todo</button>
+          <button class="btn btn-outline-primary btn-sm">Add New To-do</button>
           <button class="btn btn-outline-primary btn-sm" @click="markAllDone">Mark All Done</button>
           <button class="btn btn-outline-danger btn-sm" @click="deleteAll">Delete All</button>
         </div>
