@@ -8,8 +8,10 @@
 
         <div class="submit-buttons mt-2">
           <button class="btn btn-outline-primary btn-sm">Add New To-do</button>
-          <button class="btn btn-outline-primary btn-sm" @click="markAllDone">Mark All Done</button>
-          <button class="btn btn-outline-danger btn-sm" @click="deleteAll">Delete All</button>
+          <button class="btn btn-outline-primary btn-sm" @click="markAllDone" :disabled="isButtonDisabled()">Mark All
+            Done</button>
+          <button class="btn btn-outline-danger btn-sm" @click="deleteAll" :disabled="isButtonDisabled()">Delete
+            All</button>
         </div>
       </form>
     </section>
@@ -42,6 +44,12 @@ export default {
       }
       newTodo.value = "";
     }
+    function isButtonDisabled() {
+      if (todos.value.length) {
+        return false;
+      }
+      else return true;
+    }
     function toggleDone(todo) {
       todo.done = !todo.done;
     }
@@ -68,6 +76,7 @@ export default {
       newTodo,
       todos,
       tempID,
+      isButtonDisabled
     };
   },
   components: { TodoList }
