@@ -10,7 +10,7 @@
 <script>
 export default {
     props: ['title', 'done', 'index'],
-    emits: ['testClick', 'spanClick'],
+    emits: ['testClick'],
 }
 </script>
 
