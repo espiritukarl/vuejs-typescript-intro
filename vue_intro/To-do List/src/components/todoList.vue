@@ -1,17 +1,15 @@
 <template>
 
     <div class="todoItem mt-5">
-        <span class="border-bottom border-primary" :class="{strikeThrough: done}">Task #{{ index+1 + ": " + title
+        <span class="border-bottom border-primary" :class="{ strikeThrough: done }">Task #{{ index + 1 + ": " + title
         }}</span>
         <button class="btn btn-danger btn-sm del" @click="$emit('testClick')">Remove</button>
     </div>
 </template>
 
 <script>
-export default {
-    props: ['title', 'done', 'index'],
-    emits: ['testClick'],
-}
+props: ['title', 'done', 'index'];
+emits: ['testClick'];
 </script>
 
 <style>

@@ -17,69 +17,53 @@
     </section>
 
     <ul class="mb-5">
-      <li class="todoTasks" v-for="(todo,index) in todos" :key="todo.id" @click="toggleDone(todo)">
+      <li class="todoTasks" v-for="(todo, index) in todos" :key="todo.id" @click="toggleDone(todo)">
         <TodoList @test-click="removeTodo(index)" :index=index :title="todo.content" :done="todo.done" />
       </li>
     </ul>
   </main>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 import TodoList from './components/todoList.vue';
 
-export default {
-  setup() {
-    const newTodo = ref("");
-    const todos = ref([]);
-    let tempID = 0;
+const newTodo = ref("");
+const todos = ref([]);
+let tempID = 0;
 
-    function addNewTodo() {
-      if (newTodo.value.length) {
-        todos.value.push({
-          id: tempID++,
-          done: false,
-          content: newTodo.value + " "
-        });
-      }
-      newTodo.value = "";
-    }
-    function isButtonDisabled() {
-      if (todos.value.length) {
-        return false;
-      }
-      else return true;
-    }
-    function toggleDone(todo) {
-      todo.done = !todo.done;
-    }
-    function removeTodo(index) {
-      todos.value.splice(index, 1);
-    }
-    function markAllDone() {
-      if (todos.value.every((todo) => todo.done == true)) {
-        todos.value.forEach((todo) => todo.done = false);
-      }
-      else {
-        todos.value.forEach((todo) => todo.done = true);
-      }
-    }
-    function deleteAll() {
-      todos.value.splice(0, todos.value.length)
-    }
-    return {
-      addNewTodo,
-      toggleDone,
-      removeTodo,
-      markAllDone,
-      deleteAll,
-      newTodo,
-      todos,
-      tempID,
-      isButtonDisabled
-    };
-  },
-  components: { TodoList }
+function addNewTodo() {
+  if (newTodo.value.length) {
+    todos.value.push({
+      id: tempID++,
+      done: false,
+      content: newTodo.value + " "
+    });
+  }
+  newTodo.value = "";
+}
+function isButtonDisabled() {
+  if (todos.value.length) {
+    return false;
+  }
+  else return true;
+}
+function toggleDone(todo) {
+  todo.done = !todo.done;
+}
+function removeTodo(index) {
+  todos.value.splice(index, 1);
+}
+function markAllDone() {
+  if (todos.value.every((todo) => todo.done == true)) {
+    todos.value.forEach((todo) => todo.done = false);
+  }
+  else {
+    todos.value.forEach((todo) => todo.done = true);
+  }
+}
+function deleteAll() {
+  todos.value.splice(0, todos.value.length)
 }
 </script>
 
