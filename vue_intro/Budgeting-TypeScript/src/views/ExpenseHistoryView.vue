@@ -2,5 +2,5 @@
 </script>
 
 <template>
-  <h1>Home</h1>
+    <h2>Expense History</h2>
 </template>

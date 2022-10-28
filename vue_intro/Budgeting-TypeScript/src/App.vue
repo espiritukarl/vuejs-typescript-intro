@@ -1,23 +1,74 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { ref } from 'vue'
+import Summary from './components/Summary.vue';
+import History from './components/History.vue';
+
+const options: Array<string> = [
+  "Income",
+  "Expense"
+];
+
+let selectedOption = ref('');
+let amount = ref('');
+let desc = ref('');
+
+let amountIncome = ref(0);
+let amountExpense = ref(0);
+let amountTotal = ref(0);
+
+let wasIncome = ref([0]);
+let descIncome = ref(['']);
+
+let wasExpense = ref([0]);
+let descExpense = ref(['']);
+
+function formSubmit() {
+  if (selectedOption.value == 'Income' && amount.value) {
+    amountIncome.value += Number(amount.value);
+    wasIncome.value.push(Number(amount.value));
+    descIncome.value.push(desc.value);
+  } else if (selectedOption.value == 'Expense' && amount.value) {
+    amountExpense.value += Number(amount.value);
+    wasExpense.value.push(Number(amount.value));
+    descExpense.value.push(desc.value);
+  }
+  amountTotal.value = amountIncome.value - amountExpense.value;
+  amount.value = '';
+  desc.value = '';
+
+}
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <h1>Budget App</h1>
 
-      <nav>
+      <form @submit.prevent="formSubmit">
+        <div class="input-form">
+          <select name="IncomeExpense" id="IncomeExpense" v-model="selectedOption">
+            <option v-for="option in options" :value="option">{{ option }}</option>
+          </select>
+          <input type="number" v-model="amount" placeholder="Input amount" required>
+          <input type="text" v-model="desc" placeholder="Description..." required>
+        </div>
+        <button>Submit</button>
+      </form>
+
+      <!-- <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+        <RouterLink to="/summary">Summary</RouterLink>
+        <RouterLink to="/income_history">Income</RouterLink>
+        <RouterLink to="/expense_history">Expense</RouterLink>
+      </nav> -->
     </div>
+    <Summary :amount-expense="amountExpense" :amount-income="amountIncome" :amount-total="amountTotal" />
+    <History :amount="wasIncome" :desc="descIncome" msg="Income History: " />
+    <History :amount="wasExpense" :desc="descExpense" msg="Expense History: " />
   </header>
 
-  <RouterView />
+  <!-- <RouterView /> -->
 </template>
 
 <style scoped>
