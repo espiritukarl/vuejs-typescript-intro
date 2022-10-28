@@ -8,8 +8,10 @@
 </template>
 
 <script>
-props: ['title', 'done', 'index'];
-emits: ['testClick'];
+export default {
+    props: ['title', 'done', 'index'],
+    emits: ['testClick']
+}
 </script>
 
 <style>
