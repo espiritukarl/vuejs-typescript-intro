@@ -4,6 +4,8 @@ const props = defineProps<{
     amountExpense: number,
     amountTotal: number
 }>();
+
+let expenses = -props.amountExpense
 </script>
 
 <template>
@@ -11,7 +13,7 @@ const props = defineProps<{
         <h2>Summary</h2>
         <ul class="summary">
             <li>Income: <span class="income">Php {{ props.amountIncome }}</span></li>
-            <li>Expense: <span class="expense">Php {{ props.amountExpense }}</span></li>
+            <li>Expense: <span class="expense">Php {{ expenses }}</span></li>
             <li>Total: <span
                     :style="[props.amountTotal >= 0 ? props.amountTotal == 0 ? { 'color': 'black' } : { 'color': 'green' } : { 'color': 'red' }]">Php
                     {{

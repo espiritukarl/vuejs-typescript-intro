@@ -30,7 +30,7 @@ function formSubmit() {
     descIncome.value.push(desc.value);
   } else if (selectedOption.value == 'Expense' && amount.value) {
     amountExpense.value += Number(amount.value);
-    wasExpense.value.push(Number(amount.value));
+    wasExpense.value.push(Number(`-${amount.value}`));
     descExpense.value.push(desc.value);
   }
   amountTotal.value = amountIncome.value - amountExpense.value;
