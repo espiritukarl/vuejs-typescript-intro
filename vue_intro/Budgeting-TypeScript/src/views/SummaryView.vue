@@ -1,17 +1,16 @@
 <script setup lang="ts">
-import SummaryVue from '@/components/Summary.vue';
+import Summary from '../components/Summary.vue'
+defineProps<{
+  amountIncome: number,
+  amountExpense: number,
+  amountTotal: number
+}>();
 </script>
 
 <template>
-  <SummaryVue />
+  <Summary :amount-expense="amountExpense" :amount-income="amountIncome" :amount-total="amountTotal" />
 </template>
 
 <style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
+
 </style>

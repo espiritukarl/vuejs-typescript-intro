@@ -1,35 +1,34 @@
-@import './base.css';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-
-  font-weight: normal;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
+body {
+    font-family: 'Roboto', sans-serif;
     display: flex;
-    place-items: center;
-  }
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #C9FFBF;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFAFBD, #C9FFBF);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFAFBD, #C9FFBF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+}
+
+h1 {
+    margin: 15px 0;
+}
+
+.income {
+    color: green;
+}
+
+.expense {
+    color: red;
+}
+
+.default {
+    color: black;
 }

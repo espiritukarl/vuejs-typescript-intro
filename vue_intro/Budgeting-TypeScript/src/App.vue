@@ -58,79 +58,67 @@ function formSubmit() {
 
       <!-- <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/summary">Summary</RouterLink>
+        <RouterLink to="/summary" :amount-expense="amountExpense" :amount-income="amountIncome"
+          :amount-total="amountTotal">Summary</RouterLink>
         <RouterLink to="/income_history">Income</RouterLink>
         <RouterLink to="/expense_history">Expense</RouterLink>
       </nav> -->
     </div>
     <Summary :amount-expense="amountExpense" :amount-income="amountIncome" :amount-total="amountTotal" />
-    <History :amount="wasIncome" :desc="descIncome" msg="Income History: " />
-    <History :amount="wasExpense" :desc="descExpense" msg="Expense History: " />
+    <History :amount="wasIncome" :desc="descIncome" msg="Income History: " class="income" />
+    <History :amount="wasExpense" :desc="descExpense" msg="Expense History: " class="expense" />
   </header>
 
   <!-- <RouterView /> -->
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+.input-form select,
+.input-form input {
+  padding: 1px 5px;
+  border: 1.2px solid blue;
+  border-radius: 2%;
+  background: transparent;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.input-form select::placeholder,
+.input-form input::placeholder {
+  color: rgba(72, 72, 255, 0.753);
+  font-style: italic;
 }
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+.input-form select {
+  min-width: 100px;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+.input-form input[type='number'] {
+  min-width: 200px;
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+.input-form input[type='text'] {
+  min-width: 500px;
 }
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+.input-form {
+  display: flex;
+  gap: 2px;
 }
 
-nav a:first-of-type {
-  border: 0;
+form button {
+  margin: 5px 0 15px auto;
+  display: flex;
+  justify-content: end;
+  border: 1px solid rgb(93, 93, 255);
+  border-radius: 10%;
+  padding: 3px 5px;
+  background-color: rgba(93, 93, 255, 0.568);
+  color: white;
+  cursor: pointer;
+  transition: all ease 0.5ms;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+form button:hover {
+  border: 1px solid blue;
+  background-color: blue;
 }
 </style>
