@@ -79,6 +79,7 @@ function formSubmit() {
   border: 1.2px solid blue;
   border-radius: 2%;
   background: transparent;
+  color: rgb(87, 0, 201);
 }
 
 .input-form select::placeholder,
